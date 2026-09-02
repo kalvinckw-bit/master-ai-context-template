@@ -10,7 +10,7 @@
 | :--- | :--- | :--- | :--- | :--- |
 | 📣 **Voice Out Web** | `CK Holdings\Voice Out Enterprise\VoiceOutWeb` | 地圖雷達、群組通訊、即時定位、廣告 | Firebase `voiceout-asia` (`(default)` DB) | 🟢 運行中 / 最新部署已上線 |
 | ✨ **ChristyKalvin Web** | `ChristyKalvinWeb` | 日本代購轉運、PetaRumah 房產前端 | Firebase `christykalvin-web` (`christykalvin-db`) | 🟢 運行中 / 房產前端已就緒 |
-| 🏠 **Peta Rumah** | `Peta Rumah` | 馬來西亞房源同步、人工策展後台 | Python / Telegram Sync / `christykalvin-db` | 🟢 策展模式 / 0 筆待策展 |
+| 🏠 **Peta Rumah** | `CK Holdings\Peta Rumah` | 馬來西亞房源同步、人工策展後台 | Python / Telegram Sync / `christykalvin-db` | 🟡 8 筆 Telegram 草稿待 CK 於 admin.html 審核（後台登入權限尚未 bootstrap） |
 | 🛍️ **Sougu (Crosspath)** | `Crosspath (Sougu)` | 日本商品搜購、在地採購服務 | Firebase `sougu-online` (`sougu-db`) | 🟢 架構已綁定 |
 | 📢 **Facebook Auto Post** | `Facebook Auto Post` | FB 粉絲團自動化行銷發文 | Python / Playwright / Graph API | 🟢 運行中 |
 | 🏢 **Meta Office** | `Meta Office` | 元宇宙虛擬辦公室 | HTML5 / Canvas / WebRTC | 🟢 就緒 |
