@@ -1,4 +1,4 @@
-﻿# Constitutional Project Decisions Registry (DECISIONS.md)
+# Constitutional Project Decisions Registry (DECISIONS.md)
 
 This document records permanent architectural, design, and policy decisions approved by the user.
 **DECISIONS ARE PERMANENT AND CONSTITUTIONAL.** No AI may revert, modify, or re-debate approved decisions without explicit user instruction.
@@ -103,6 +103,22 @@ This document records permanent architectural, design, and policy decisions appr
 
 ---
 
+### Decision: Universal Dual-Cloud Mirror Parity for All Group Projects (全集團專案 OneDrive ⟷ Google Drive ⟷ GitHub 三位一體同步憲法)
+- **Status**: APPROVED & MANDATORY
+- **Date**: 2026-09-09
+- **Context**: 全集團旗下所有專案（不僅限於單一專案，而是涵蓋 `Projects` 底下所有子專案：`ChristyKalvinWeb`、`CK Holdings` 旗下所有子專案、`Facebook Auto Post`、`Laundry + Cafe`、`Python` 工具群、`00 Master AI Context Template` 等），在 Google Drive 均有對應之實體鏡像目錄（`G:\マイドライブ\Projects\<專案名稱>`）。為落實跨 AI、跨裝置、跨微軟/谷歌雲端生態的絕對對齊，全集團專案必須遵循三位一體同步規範。
+- **Constitutional Rules (憲法級硬性準則)**:
+  1. **全集團一體適用（Universal Group Scope）**：
+     - 所有位於 `Projects` 目錄下之專案，一律強制適用本同步規範，絕無例外，嚴禁誤判為特定單一專案獨有！
+  2. **收工手動鏡像（Mandatory End Handoff Parity）**：
+     - Google Drive 鏡像無自動雲端排程或 Webhook 機制，任何 AI（Claude、Antigravity、ChatGPT、Codex 等）在執行 `end` 時，**必須主動找出本次 session 異動之檔案，並同步更新複製至 Google Drive 該專案根目錄鏡像對應路徑**（若在純雲端無本地磁碟掛載之環境如 Web Claude，則必須調用 Google Drive API 上傳）。
+  3. **交接報告具體透明（Transparent Audit Trail）**：
+     - 收工報告中必須具體列出同步檔案名稱與目標路徑/ID，嚴禁僅以「已同步」含糊帶過，嚴禁省略。
+  4. **嚴禁跳過與假設**：
+     - 嚴禁跳過此步驟、嚴禁假設「應該還是最新的」——忘記檢查即代表雲端鏡像停擺！
+
+---
+
 ### Decision: Master AI Context Dual-Cloud Synchronization Mandate (Master AI Context 雙雲同步法則：OneDrive ⟷ Google Drive ⟷ GitHub)
 - **Status**: APPROVED & MANDATORY
 - **Date**: 2026-09-09
@@ -115,4 +131,4 @@ This document records permanent architectural, design, and policy decisions appr
   2. **GitHub 遠端歸檔（Git Remote SSoT）**：
      - 雙雲寫入完畢後，必須立即 `git commit` 並 `git push` 至 GitHub 遠端儲存庫 `kalvinckw-bit/master-ai-context-template`。
   3. **零時差驗證**：
-     - 兩大雲端目錄之內容必須保持 100% 同步，確保使用者無論從微軟生態還是谷歌生態開啟，看到的 Master Context 永遠完全一致！
+     - 兩大雲端目錄之內容必須進行 Byte / SHA256 實體比對，確保 100% 絕對同步，確保使用者無論從微軟生態還是谷歌生態開啟，看到的 Master Context 永遠完全一致！

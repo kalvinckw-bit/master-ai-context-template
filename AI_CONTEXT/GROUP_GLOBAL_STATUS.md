@@ -1,4 +1,4 @@
-﻿# CK Holdings Central Group Dashboard (GROUP_GLOBAL_STATUS.md)
+# CK Holdings Central Group Dashboard (GROUP_GLOBAL_STATUS.md)
 **Last Updated**: 2026-08-30 12:05 JST  
 **SSoT Authority**: `C:\Users\kalvi\OneDrive\Projects\00 Master AI Context Template\AI_CONTEXT\GROUP_GLOBAL_STATUS.md`
 
@@ -26,8 +26,10 @@
 
 ---
 
-## ⚡ AI 行動指引（Zero Dumb Questions）
+## ⚡ AI 行動指引（Zero Dumb Questions & Dual-Cloud Parity）
 任何 AI 在接手任何 Session 時：
 1. **直接讀取本檔案** 掌握全集團全貌。
 2. 進入目標資料夾讀取 `AI_CONTEXT/TODO.md` 與 `AI_CONTEXT/CURRENT_STATUS.md`。
-3. 主動執行任務並自動 Push，嚴禁推託或詢問「連線在不在」等問題！
+3. **開局必 Pull，收工必 Push**，並嚴格執行 **Google Drive 鏡像同步**（全集團專案在 `G:\マイドライブ\Projects\...` 皆有鏡像，AI 必須在收工時將修改檔案同步上傳並於報告附上詳細清單）。
+4. **Master AI Context 修改原則**：若修改 Master AI Context，必須同時更新 OneDrive 與 Google Drive 兩端並比對 Hash！
+5. 主動執行任務並自動 Push，嚴禁推託或詢問「連線在不在」等問題！
