@@ -2,42 +2,39 @@
 
 **Session ID / Chatroom**: `cd79bc6e-0377-481f-8cba-c852fcc2b590`  
 **Host Platform**: Desktop, Windows 11  
-**Last Active Timestamp**: 2026-08-30T11:55:35+09:00  
-**Current State**: `END` (交接完畢 / Session Handover Ready)
+**Last Active Timestamp**: 2026-09-10T23:50:00+09:00  
+**Current State**: `ACTIVE / SYNCHRONIZED` (憲法更新與雙雲同步完成)
 
 ---
 
 ## 📋 1. 本次 Session 完成之重大任務 (Work Accomplished)
 
-### A. 相片與影片「撮影日時」與「メディアの作成日時」精準重命名
-1. **`2026.02.05 CNY Malaysia`（775+ 個檔案）**：
-   * 診斷出 Windows 11 日文版底層 Shell COM 屬性編號：
-     * 📸 照片「撮影日時 (Date taken)」位於 **`Index 12`**
-     * 🎥 影片「メディアの作成日時 (Media created)」位於 **`Index 215`**
-   * 依照微軟原生屬性將全數照片與 QuickTime MOV/MP4 影片精準重命名為 `YYYYMMDD HHMM00.ext`。
-   * 依照使用者指令，將全數檔案平鋪於主資料夾外層，移除所有空子目錄，並安全保護 `Done` 資料夾。
-2. **`2026.03.23 Vietnam Ho Chi Minh`（154 個檔案）**：
-   * 同步套用 Windows 11 原生 Shell COM（Index 12 / Index 215）重命名，全數照片與影片 100% 符合拍攝時間。
-3. **無攝影時間檔案之「AI 視覺特徵感知聚類」**：
-   * 利用 Python 影像特徵與感知哈希（pHash/dHash）對連拍照、同場景照片進行分組編號（`Undated_Group_xx` / `Undated_Photo_xxx`）。
+### A. 幽靈資料夾（`Voice&#x5c; Out&#x5c; Enterprise`）清理與根因診斷
+1. **清理幽靈目錄**：安全移除 `C:\Users\kalvi\OneDrive\Projects\Voice&#x5c; Out&#x5c; Enterprise`，確認 `Projects` 回歸 10 個標準乾淨專案目錄。
+2. **追查根源**：診斷出 AI 在 Unix/Bash 環境使用 `Voice\ Out` 跳脫空格，轉發或 Markdown 序列化成 HTML 實體編碼 `&#x5c;`，寫入 Windows 檔案系統產生文字目錄。
 
-### B. 建立相簿命名與視覺潔癖標準規範
-* 在 `C:\Users\kalvi\OneDrive\Photos` 建立了 **`Photo Naming Standard.md`**。
-* **置頂規定使用者嚴格視覺潔癖（Initial Only Capital Letter）**：
-  * 嚴禁全大寫（例如禁止 `PHOTO_NAMING_STANDARD.md`，必須為 `Photo Naming Standard.md`）。
-  * 單字僅首字母大寫，其餘小寫。
-  * 包含 Python + Windows Shell 批次重命名標準腳本，供跨平台 AI 遵循。
+### B. 跨平台路徑防禦鋼鐵憲法（Strict Path Quoting & Zero Unix Backslash Escape）
+1. **修訂 Master AI Context 全套入口公文（Anti-Silo Mandate）**：
+   - `AGENTS.md`、`CLAUDE.md`、`CHATGPT.md`：新增「跨平台路徑防禦鋼鐵憲法」警示區塊。
+   - `AI_CONTEXT/DECISIONS.md`：正式登錄永久決策《Strict Cross-Platform Path Quoting & Zero Unix Backslash Escape Policy》。
+   - `AI_CONTEXT/GROUP_GLOBAL_STATUS.md`：行動指引新增第 6 條路徑防禦條款並更新儀表板時間。
+   - `CHANGELOG_AI.md`：登錄 2026-09-10 之架構變更紀錄。
+2. **雙雲鏡像同步與實體 SHA256 驗證**：
+   - 同步寫入 `G:\マイドライブ\Projects\00 Master AI Context Template\`。
+   - 執行 PowerShell SHA256 比對，確認 OneDrive 與 Google Drive 100% 精確一致。
+3. **推送到 GitHub 遠端儲存庫**：
+   - 提交並成功推送到 `kalvinckw-bit/master-ai-context-template` (`main`)。
 
 ---
 
 ## 🧭 2. 接續 AI 需注意之未竟事項與指南 (Next Steps & Directives)
 
-1. **使用者核心習慣與指令**：
-   * 2-Command 簡潔工作流：只說 `start` 與 `end`。
-   * 大小寫潔癖：檔案與資料夾名稱只允許首字母大寫（Pascal/Title Case）。
-   * 嚴禁擅自改動或刪除任何名為 `Done` 的資料夾。
-2. **跨專案 AI Context 存放規範**：
-   * 每個專案目錄下皆維護 `AI_CONTEXT/` 與各 AI 專屬 Session 紀錄 `[AI] ([Desktop/VS Code], [Windows/MacBook]).md`。
+1. **路徑處理硬性準則**：
+   - 凡路徑含空格，一律以半形雙引號包裹（如 `"C:\Users\kalvi\OneDrive\Projects\Voice Out Enterprise"`）。
+   - 嚴禁 Unix 反斜線跳脫（`Voice\ Out`），嚴禁 HTML 實體（`&#x5c;`）。
+2. **Claude Desktop 當機處置**：
+   - 電腦未損壞，係因特定肥大會話卡死 Electron 渲染。
+   - 避免點開卡死之歷史對話，新任務一律點擊 `+ Start new chat`。
 
 ---
 
