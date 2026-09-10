@@ -131,4 +131,20 @@ This document records permanent architectural, design, and policy decisions appr
   2. **GitHub 遠端歸檔（Git Remote SSoT）**：
      - 雙雲寫入完畢後，必須立即 `git commit` 並 `git push` 至 GitHub 遠端儲存庫 `kalvinckw-bit/master-ai-context-template`。
   3. **零時差驗證**：
-     - 兩大雲端目錄之內容必須進行 Byte / SHA256 實體比對，確保 100% 絕對同步，確保使用者無論從微軟生態還是谷歌生態開啟，看到的 Master Context 永遠完全一致！
+      - 兩大雲端目錄之內容必須進行 Byte / SHA256 實體比對，確保 100% 絕對同步，確保使用者無論從微軟生態還是谷歌生態開啟，看到的 Master Context 永遠完全一致！
+
+---
+
+### Decision: Strict Cross-Platform Path Quoting & Zero Unix Backslash Escape Policy (跨平台與 Windows 路徑防禦鋼鐵憲法：嚴禁 Unix 反斜線跳脫空格、嚴禁 HTML 實體路徑)
+- **Status**: APPROVED & MANDATORY
+- **Date**: 2026-09-10
+- **Context**: 曾發生 AI 在 Unix/Bash 環境下使用反斜線跳脫空格（`Voice\ Out\ Enterprise`），經 API 或 Markdown 序列化轉譯成 HTML 實體字元（`Voice&#x5c; Out&#x5c; Enterprise`），並同步至 Windows 檔案系統與 OneDrive，導致產生幽靈實體資料夾。為防止跨平台與跨 AI 開發時重犯此類路徑錯亂與幽靈目錄問題，特立此憲法級規範。
+- **Constitutional Rules (憲法級硬性準則)**:
+  1. **強制半形雙引號包裹（Mandatory Double-Quoting）**：
+     - 凡路徑含有空格，不論是 CLI 命令、腳本、Git 操作或配置檔，一律以半形雙引號包裹完整路徑（例如 `"C:\Users\kalvi\OneDrive\Projects\Voice Out Enterprise"`），嚴禁用跳脫字元代替引號。
+  2. **嚴禁 Unix 反斜線跳脫（Strict Zero Unix Backslash Escape）**：
+     - 嚴禁在跨平台與 Windows 環境下使用 `\ `（反斜線加空格）來跳脫空格。
+  3. **嚴禁 HTML 實體編碼注入路徑（Zero HTML Entity in Paths）**：
+     - 檔案系統 API、目錄名稱與檔名中嚴禁出現 `&#x5c;`、`&amp;`、`&#32;`、`%20` 等實體編碼。
+  4. **全體 AI 巡檢與自癒義務（Automated Self-Healing）**：
+     - 任何 AI 於開局 `start` 或檔案操作時，若偵測到含有 `&#` 等 HTML 實體字元之幽靈目錄，必須主動安全清理，嚴禁納入 Git 或同步至 Google Drive。

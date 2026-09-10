@@ -25,6 +25,17 @@
 > **2. 必須進行 Byte / SHA256 實體比對，確保 OneDrive 與 Google Drive 兩邊之 Master Context 100% 絕對一致！**
 > **3. 必須同時執行 `git commit` 並 `git push origin main` 推送至 GitHub `kalvinckw-bit/master-ai-context-template`！**
 
+> [!CAUTION]
+> ### ⚡ 跨平台路徑防禦鋼鐵憲法（Strict Path Quoting & Zero Unix Backslash Escape Mandate）
+> **全體 AI 在 Windows / OneDrive / 跨平台處理路徑、檔案操作與執行腳本時：**
+> 1. **強制使用雙引號包裹包含空格之路徑**：
+>    - 凡路徑包含空格，必須一律使用半形雙引號完整包裹（例如 `"C:\Users\kalvi\OneDrive\Projects\Voice Out Enterprise"`、`"Voice Out Enterprise"`）。
+> 2. **嚴禁 Unix 反斜線跳脫空格**：
+>    - 嚴禁在跨平台腳本或命令列中使用 Unix 反斜線跳脫空格（例如嚴禁 `Voice\ Out` 或 `Voice\ Out\ Enterprise`）。在 Windows 檔案系統與 PowerShell 中，`\` 為路徑分隔符號，隨意使用 `\ ` 會導致字串被錯誤解析。
+> 3. **嚴禁在路徑與檔名中出現任何 HTML 實體編碼**：
+>    - 嚴禁在任何檔案系統呼叫、Git 指令、建立目錄 API 中使用 HTML 實體字元（例如 `&#x5c;`、`&amp;`、`&#32;`、`%20` 等）。違者會直接在 Windows 磁碟產生如 `Voice&#x5c; Out&#x5c; Enterprise` 等幽靈資料夾，污染 OneDrive 與 Google Drive 雲端同步！
+> 4. **幽靈目錄自動巡檢自癒義務**：
+>    - 任何 AI 執行 `start` 或日常操作時，若發現含有 `&#` 之幽靈資料夾，必須主動將其安全移除並糾正路徑，嚴禁將幽靈資料夾提交至 Git 或同步至雲端。
 
 > [!IMPORTANT]
 > ### 👑 核心啟動指令：開局必讀集團 Master AI Context（Master SSoT Sync）
