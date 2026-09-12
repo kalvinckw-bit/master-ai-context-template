@@ -48,6 +48,28 @@
 > 3. **嚴禁未經真實工具檢查之幻覺（Fact-First & Zero Hallucination）**：
 >    - 任何宣稱「無 remote」、「無法 push」前，必須先以工具真實查詢，絕不允許憑空猜測！
 
+> [!CAUTION]
+> ### ⚡ 移動端防快取與 UI 禁存 Cookie/Storage 鋼鐵憲法（Zero Mobile Cache & Fresh UI Mandate）
+> **手機瀏覽器（iOS Safari / Android Chrome）沒有電腦的「強制重新整理（Ctrl + F5）」功能，極易陷入快取地獄導致 UI 無法更新、永遠停留舊版！全體 AI 必須嚴格執行以下鐵律：**
+> 1. **嚴禁將 UI 狀態或 HTML 結構存入 Cookie / LocalStorage / SessionStorage**：
+>    - 嚴禁利用 Cookie 或 Web Storage 暫存整頁 HTML、UI 元件佈局或過期靜態資料。
+>    - Cookie 與 Storage 僅限用於儲存必要的驗證 Token、語系偏好（純代碼如 `"zh"`）或主題名稱，嚴禁存放任何阻礙手機讀取最新 DOM 與即時數據之快取。
+> 2. **所有 Web 專案的 `firebase.json` 強制配置防快取 HTTP 標頭**：
+>    - 任何部署至 Firebase Hosting 的專案，其 `firebase.json` 必須對 `**/*.html` 與 `**/*.json` 強制配置：
+>      - `Cache-Control`: `no-cache, no-store, must-revalidate, max-age=0`
+>      - `Pragma`: `no-cache`
+>      - `Expires`: `0`
+> 3. **所有 HTML 檔案檔頭強制包含防快取 Meta 標籤**：
+>    ```html
+>    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+>    <meta http-equiv="Pragma" content="no-cache">
+>    <meta http-equiv="Expires" content="0">
+>    ```
+> 4. **外掛 JS / CSS 強制版本號防快取（Cache Busting）**：
+>    - 引用外掛 JS / CSS 時必須帶有版本號或時間戳參數（例如 `app.js?v=20260913` 或打包 hash），禁止無版本號裸引用。
+> 5. **嚴禁 Service Worker 攔截 HTML 造成離線僵屍快取**：
+>    - 使用 Service Worker（如 FCM）時，嚴禁對 HTML 頁面進行快取攔截，必須嚴格採用 Network Only，防止手機關閉分頁重開依然讀到快取舊版。
+
 
 > [!IMPORTANT]
 > ### 👑 核心啟動指令：開局必讀集團 Master AI Context（Master SSoT Sync）

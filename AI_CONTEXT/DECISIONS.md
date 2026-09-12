@@ -148,3 +148,30 @@ This document records permanent architectural, design, and policy decisions appr
      - 檔案系統 API、目錄名稱與檔名中嚴禁出現 `&#x5c;`、`&amp;`、`&#32;`、`%20` 等實體編碼。
   4. **全體 AI 巡檢與自癒義務（Automated Self-Healing）**：
      - 任何 AI 於開局 `start` 或檔案操作時，若偵測到含有 `&#` 等 HTML 實體字元之幽靈目錄，必須主動安全清理，嚴禁納入 Git 或同步至 Google Drive。
+
+---
+
+### Decision: Zero Mobile Cache & Fresh UI Mandate (移動端防快取與 UI 禁存 Cookie/Storage 鋼鐵憲法)
+- **Status**: APPROVED & MANDATORY
+- **Date**: 2026-09-13
+- **Context**: 手機瀏覽器（iOS Safari、Android Chrome、PWA、WebView）缺乏電腦端的「強制重新整理（Ctrl + F5 / Hard Refresh）」快捷鍵，極易對 HTML、靜態資源或 Storage 快取進行頑固快取，導致創辦人與用戶在手機端始終看到舊版介面、功能無法即時更新。過去曾有 AI 將 UI 佈局或資料緩存於 Cookies / LocalStorage，更加劇了手機端停留在舊版的痛點。
+- **Constitutional Rules (憲法級硬性準則)**:
+  1. **嚴禁將 UI 狀態或 HTML 結構存入 Cookie / LocalStorage / SessionStorage**：
+     - 嚴禁利用 Cookie 或 Web Storage 暫存整頁 HTML、UI 元件佈局或過期靜態資料。
+     - Cookie 與 Storage 僅限用於儲存必要的驗證 Token、語系偏好（純代碼如 `"zh"`）或主題名稱，嚴禁存放任何阻礙手機讀取最新 DOM 與最新資料庫數據之快取。
+  2. **所有 Web 專案的 `firebase.json` 強制配置防快取 HTTP 標頭**：
+     - 任何部署至 Firebase Hosting 的專案，其 `firebase.json` 必須對 `**/*.html` 與 `**/*.json` 強制配置：
+       - `Cache-Control`: `no-cache, no-store, must-revalidate, max-age=0`
+       - `Pragma`: `no-cache`
+       - `Expires`: `0`
+  3. **所有 HTML 檔案檔頭強制包含防快取 Meta 標籤**：
+     - 每一個 HTML 頁面之 `<head>` 中必須包含：
+       ```html
+       <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+       <meta http-equiv="Pragma" content="no-cache">
+       <meta http-equiv="Expires" content="0">
+       ```
+  4. **外掛 JS / CSS 強制版本號防快取（Cache Busting）**：
+     - 引用外掛 JS / CSS 時必須帶有版本號或時間戳參數（例如 `app.js?v=20260913` 或打包 hash），禁止無版本號裸引用。
+  5. **嚴禁 Service Worker 攔截 HTML 造成離線僵屍快取**：
+     - 使用 Service Worker（如 FCM）時，嚴禁對 HTML 頁面進行快取攔截，必須嚴格採用 Network Only，防止手機關閉分頁重開依然讀到快取舊版。

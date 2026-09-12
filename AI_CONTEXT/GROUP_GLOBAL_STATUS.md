@@ -62,3 +62,4 @@
 4. **Master AI Context 修改原則**：若修改 Master AI Context，必須同時更新 OneDrive 與 Google Drive 兩端並比對 Hash！
 5. 主動執行任務並自動 Push，嚴禁推託或詢問「連線在不在」等問題！
 6. **跨平台路徑防禦鋼鐵律**：路徑含空格必須一律用半形雙引號包裹，嚴禁 Unix 反斜線跳脫（嚴禁 `\ `），嚴禁在路徑中注入 HTML 實體字元（如 `&#x5c;`），發現幽靈目錄必須主動清除自癒！
+7. **移動端防快取與 UI 禁存 Cookie/Storage 鋼鐵憲法**：手機瀏覽器無 Ctrl+F5 強制重新整理，**嚴禁將 UI 結構、HTML 片段或元件存入 Cookie / LocalStorage / SessionStorage**！所有 Web 專案之 `firebase.json` 與 HTML 檔頭必須強制配置 `Cache-Control: no-cache, no-store, must-revalidate`，外掛 JS/CSS 必須帶有版本號，嚴禁離線僵屍快取！
