@@ -10,12 +10,12 @@
 
 | 專案名稱 | 實體路徑 | 負責領域 | 核心技術 / 雲端目標 | 目前狀態 |
 | :--- | :--- | :--- | :--- | :--- |
-| 🏢 **CK Holdings 官方門戶** | `CK Holdings` | 集團頂層品牌門戶、核心事業體入口與控股全貌 | Cloudflare / Firebase | 🟢 2026-09-12 網域已啟用，Cloudflare 託管與 Email 路由已就緒 |
-| 📣 **Voice Out Web / App** | `CK Holdings\Voice Out Enterprise\VoiceOutWeb` | 地圖雷達、群組通訊、即時定位、廣告 | Firebase `voiceout-asia` (`(default)` DB) | 🟢 運行中 / 最新部署已上線 |
+| 🏢 **CK Holdings 官方門戶** | `CK Holdings\ck-holdings-web` | 集團頂層品牌門戶、核心事業體入口與控股全貌 | Cloudflare / Firebase | 🟢 2026-09-12 門戶已建立，整合 creditcard、carirumah、dead-man-switch |
+| 📣 **Voice Out Web / App** | `CK Holdings\Voice Out Enterprise\VoiceOutWeb` | 地圖雷達、群組通訊、即時定位、廣告 | Firebase `voiceout-asia` (`(default)` DB) | 🟢 運行中 / 根目錄重複已清除，docs 法定文件已歸檔 |
 | ✨ **ChristyKalvin Web** | `ChristyKalvinWeb` | 全球精品商城、日本代購、Cari Rumah 房產前端、即時匯率工具 | Firebase `christykalvin-web` (`christykalvin-db`) | 🟢 運行中 / 房產前端已就緒 |
-| 🏠 **Cari Rumah** | `CK Holdings\Peta Rumah` | 馬來西亞視覺化房地產地圖與決策平台、Telegram 房源同步 | Python / Telegram Sync / `christykalvin-db` | 🟡 8 筆 Telegram 草稿待 CK 於 admin.html 審核（前稱 Peta Rumah） |
-| 🛍️ **Sougu (Crosspath)** | `Crosspath (Sougu)` | 日本商品搜購、空間坐標互動與社群媒合 | Firebase `sougu-online` (`sougu-db`) | 🟢 架構已綁定 |
-| 💻 **Meta Office** | `CK Holdings\Meta Office` | 2D 像素沉浸式虛擬企業辦公空間 | HTML5 / Canvas / WebRTC | 🟢 就緒 |
+| 🏠 **Cari Rumah** | `CK Holdings\Cari Rumah` | 馬來西亞視覺化房地產地圖與決策平台、Telegram 房源同步 | Python / Telegram Sync / `christykalvin-db` | 🟡 8 筆 Telegram 草稿待 CK 於 admin.html 審核（目錄已正式更名為 Cari Rumah） |
+| 🛍️ **Sougu (Crosspath)** | `CK Holdings\Crosspath (Sougu)` | 日本商品搜購、空間坐標互動與社群媒合 | Firebase `sougu-online` (`sougu-db`) | ⚪ 研發停滯 / 暫未成功運行 (Standby / Inactive) |
+| 💻 **Meta Office** | `CK Holdings\Meta Office` | 2D 像素沉浸式虛擬企業辦公空間 | HTML5 / Canvas / WebRTC | ⚪ 研發停滯 / 暫未成功運行 (Standby / Inactive) |
 | 📋 **00 Master AI Template** | `00 Master AI Context Template` | 集團憲法母版 | Markdown SSoT | 🟢 最新同步 |
 
 ---
