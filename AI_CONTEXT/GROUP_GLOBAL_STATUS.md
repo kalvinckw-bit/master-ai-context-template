@@ -10,12 +10,12 @@
 
 | 專案名稱 | 實體路徑 | 負責領域 | 核心技術 / 雲端目標 | 目前狀態 |
 | :--- | :--- | :--- | :--- | :--- |
-| 🏢 **CK Holdings 官方門戶** | `CK Holdings\ck-holdings-web` | 集團頂層品牌門戶、核心事業體入口與控股全貌 | Cloudflare / Firebase | 🟢 2026-09-12 門戶已建立，整合 creditcard、carirumah、dead-man-switch |
-| 📣 **Voice Out Web / App** | `CK Holdings\Voice Out Enterprise\VoiceOutWeb` | 地圖雷達、群組通訊、即時定位、廣告 | Firebase `voiceout-asia` (`(default)` DB) | 🟢 運行中 / 根目錄重複已清除，docs 法定文件已歸檔 |
-| ✨ **ChristyKalvin Web** | `ChristyKalvinWeb` | 全球精品商城、日本代購、Cari Rumah 房產前端、即時匯率工具 | Firebase `christykalvin-web` (`christykalvin-db`) | 🟢 運行中 / 房產前端已就緒 |
-| 🏠 **Cari Rumah** | `CK Holdings\Cari Rumah` | 馬來西亞視覺化房地產地圖與決策平台、Telegram 房源同步 | Python / Telegram Sync / `christykalvin-db` | 🟡 8 筆 Telegram 草稿待 CK 於 admin.html 審核（目錄已正式更名為 Cari Rumah） |
-| 🛍️ **Sougu (Crosspath)** | `CK Holdings\Crosspath (Sougu)` | 日本商品搜購、空間坐標互動與社群媒合 | Firebase `sougu-online` (`sougu-db`) | ⚪ 研發停滯 / 暫未成功運行 (Standby / Inactive) |
-| 💻 **Meta Office** | `CK Holdings\Meta Office` | 2D 像素沉浸式虛擬企業辦公空間 | HTML5 / Canvas / WebRTC | ⚪ 研發停滯 / 暫未成功運行 (Standby / Inactive) |
+| 🏢 **CK Holdings 官方門戶** | `CK Holdings\ck-holdings-web` | 集團頂層門戶、整合 6 大產品子頁面 | Firebase `ck-holdings` | 🟢 2026-09-12 已上線，整合 6 大子頁面全部 200 OK |
+| 📣 **Voice Out Web / App** | `Voice Out Enterprise\VoiceOutWeb` | 地圖雷達、群組通訊、即時定位、廣告 | Firebase `voiceout-asia` (`(default)` DB) | 🟢 運行中 / 已移回根目錄同級，docs 法定文件完備 |
+| ✨ **ChristyKalvin Web** | `ChristyKalvinWeb` | 全球精品商城、日本代購、即時匯率工具 | Firebase `christykalvin-web` (`christykalvin-db`) | 🟢 運行中 / 專屬聚焦 shopping 與 forex |
+| 🏠 **Cari Rumah** | `CK Holdings\Cari Rumah` | 馬來西亞視覺化房地產地圖與決策平台、Telegram 房源同步 | Python / Telegram Sync / `christykalvin-db` | 🟡 8 筆 Telegram 草稿待審核（前端已整合至 ck-holdings.my/cari-rumah.html） |
+| 🛍️ **Sougu (Crosspath)** | `CK Holdings\Crosspath (Sougu)` | 日本商品搜購、空間社交源碼庫 | 前端已整併至 `ck-holdings.my/sougu.html` | ⚪ 獨立域名放棄，前端整合至總門戶 |
+| 💻 **Meta Office** | `CK Holdings\Meta Office` | 2D 像素沉浸式虛擬企業辦公空間素材庫 | 前端已整併至 `ck-holdings.my/metaoffice.html` | ⚪ 獨立域名放棄，前端整合至總門戶 |
 | 📋 **00 Master AI Template** | `00 Master AI Context Template` | 集團憲法母版 | Markdown SSoT | 🟢 最新同步 |
 
 ---
@@ -38,11 +38,18 @@
 
 ---
 
-## 🌐 網域與企業郵件路由矩陣
-- `ck-holdings.my` ➔ Cloudflare (Zone: `fb33e91d1d1fb81f3b61de1769167e75`) ｜ 信箱：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp` (✅ 2026-09-12 啟用)
-- `ck-holdings.com.my` ➔ Exabytes 審核開通中（預備接軌 Cloudflare）
-- `voiceout.asia` ➔ Firebase `voiceout-asia` ｜ 信箱：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp`
-- `christykalvin.com` ➔ Firebase `christykalvin-web` ｜ 信箱：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp`
+## 🌐 集團長遠 3 大核心網域矩陣 (3 Core Strategic Domains)
+1. 🏢 **`ck-holdings.my`** ➔ Firebase Site `ck-holdings` (Cloudflare Zone: `fb33e91d1d1fb81f3b61de1769167e75`)
+   - **收斂整合 6 大子頁面**：`/cari-rumah.html`、`/creditcard.html`、`/jpcreditcard.html`、`/dead-man-switch.html`、`/metaoffice.html`、`/sougu.html`
+   - **企業信箱**：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp` (✅ 2026-09-12 啟用)
+2. ✨ **`christykalvin.com`** ➔ Firebase Site `christykalvin-web` (Cloudflare Active)
+   - **核心頁面**：`/forex.html`、`/shopping.html`、`/shopping-admin.html`
+   - **企業信箱**：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp`
+3. 📣 **`voiceout.asia`** ➔ Firebase Site `voiceout-asia` (Cloudflare Active)
+   - **核心頁面**：`/index.html`、`/chat.html`、`/admin.html`、`/merchant.html`
+   - **企業信箱**：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp`
+
+- 備註：`ck-holdings.com.my` ➔ Exabytes 審核開通中（預備接軌 Cloudflare）
 - `sougu.online` ➔ Firebase `sougu-online` ｜ 信箱：`kalvin@` / `admin@` ➔ `kalvin.ckw@outlook.jp`
 
 ---
