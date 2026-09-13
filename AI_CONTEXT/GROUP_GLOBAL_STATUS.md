@@ -63,3 +63,4 @@
 5. 主動執行任務並自動 Push，嚴禁推託或詢問「連線在不在」等問題！
 6. **跨平台路徑防禦鋼鐵律**：路徑含空格必須一律用半形雙引號包裹，嚴禁 Unix 反斜線跳脫（嚴禁 `\ `），嚴禁在路徑中注入 HTML 實體字元（如 `&#x5c;`），發現幽靈目錄必須主動清除自癒！
 7. **移動端防快取與 UI 禁存 Cookie/Storage 鋼鐵憲法**：手機瀏覽器無 Ctrl+F5 強制重新整理，**嚴禁將 UI 結構、HTML 片段或元件存入 Cookie / LocalStorage / SessionStorage**！所有 Web 專案之 `firebase.json` 與 HTML 檔頭必須強制配置 `Cache-Control: no-cache, no-store, must-revalidate`，外掛 JS/CSS 必須帶有版本號，嚴禁離線僵屍快取！
+8. **三雲同步衝突仲裁鐵律（選一個最新的，讓舊的同步）**：三大 Drive（OneDrive、Google Drive、GitHub 遠端）發生不同步或版本衝突時，唯一仲裁標準為「**時間戳記最新 / 最新 Commit**」，最新的一端無條件覆蓋較舊的一端！嚴禁舊代碼倒灌覆蓋新代碼，AI 必須自主比對時間戳記並直接完成同步，嚴禁詢問用戶！

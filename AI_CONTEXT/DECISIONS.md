@@ -175,3 +175,24 @@ This document records permanent architectural, design, and policy decisions appr
      - 引用外掛 JS / CSS 時必須帶有版本號或時間戳參數（例如 `app.js?v=20260913` 或打包 hash），禁止無版本號裸引用。
   5. **嚴禁 Service Worker 攔截 HTML 造成離線僵屍快取**：
      - 使用 Service Worker（如 FCM）時，嚴禁對 HTML 頁面進行快取攔截，必須嚴格採用 Network Only，防止手機關閉分頁重開依然讀到快取舊版。
+
+---
+
+### Decision: Tri-Drive Sync Arbitrament: "Latest Wins & Auto-Align" Policy (三雲同步衝突仲裁與最新覆蓋原則：以最新為準，舊端無條件同步)
+- **Status**: APPROVED & MANDATORY
+- **Date**: 2026-09-13
+- **Context**: 創辦人環境依託於三大雲端儲存架構（三 Drive）：OneDrive (`C:\Users\kalvi\OneDrive\Projects`)、Google Drive (`G:\マイドライブ\Projects`) 與 GitHub 遠端儲存庫（Git Cloud）。這三個 Drive 基本上保持 1:1 實體對齊與同步。但由於多設備（MacBook、Windows PC、手機）、多 AI（Antigravity、Claude、ChatGPT）平行作業，偶爾會發生特定端點未及時推拉而產生時間差或內容不同步。創辦人明確裁定仲裁鐵律：「選一個最新的，然後讓舊的同步！」。
+- **Constitutional Rules (憲法級硬性準則)**:
+  1. **以「最新時間戳記 / 最新 Commit」為唯一最高權威（Latest Wins Rule）**：
+     - 當任何 AI 在 `start`、執行任務或 `end` 階段發現三個 Drive 內容或時間不一致時，**必須主動比對檔案修改時間（Last Modified Timestamp / LastWriteTime）或 Git Commit 時間**。
+     - **以時間戳記最新、版本號最新的一端作為唯一權威基準（Single Source of Truth for this file）**。
+     - **嚴禁使用舊版本覆蓋新版本！嚴禁讓舊代碼倒灌！**
+  2. **自動單向覆蓋同步（Auto-Align from Newest to Stale）**：
+     - 確定最新端後，AI 必須**主動將最新的檔案或代碼覆蓋同步至其餘兩端較舊的 Drive**，無條件讓舊端與最新端同步：
+       - **狀況 A（GitHub 雲端最新）**：立即執行 `git pull --rebase` 拉取至本機 OneDrive，並隨即鏡像同步複製至 Google Drive。
+       - **狀況 B（本地 OneDrive 最新）**：立即鏡像同步複製至 Google Drive，並執行 `git add / commit / push` 自動推送至 GitHub 遠端。
+       - **狀況 C（Google Drive 雲端最新）**：立即複製同步至本地 OneDrive，並由本地 OneDrive 提交並 Push 至 GitHub 遠端。
+  3. **目錄容器時間戳記對齊義務（Timestamp Parity Mandate）**：
+     - 檔案同步覆蓋完成後，必須主動校正目錄與檔案的 `LastWriteTime`，確保 OneDrive 與 Google Drive 在 Windows 檔案總管中呈現秒級一致。
+  4. **自主執行、嚴禁詢問用戶（Zero Dumb Questions / Zero Delegation）**：
+     - 遇三端不同步時，AI 必須根據時間戳記自動判定並自主完成對齊覆蓋，**嚴禁停下來詢問「請問要以哪邊為準？」**。只有在代碼發生實質無法自動合流的語法衝突（Merge Conflict）時，才可向用戶匯報。
